@@ -45,6 +45,33 @@
 .legend-mixed{background:#d7e8dc}
 .hero-art img{aspect-ratio:1;background:#f8f5ec}
 
+/* Full-bleed photograph with type placed directly on the image. */
+.hero{display:flex;position:relative;isolation:isolate;min-height:clamp(680px,54vw,900px);padding:clamp(40px,5vw,80px);align-items:center;justify-content:center;text-align:center;background:#101d22;overflow:hidden}
+.hero-image{position:absolute;inset:0;z-index:-2;display:block}
+.hero-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0b171f32 0%,#0b171f2b 30%,#0b171fa6 64%,#0b171fc4 100%);pointer-events:none}
+.hero-copy{width:min(1120px,100%);max-width:none;margin:0;padding:0;background:none;border:0;box-shadow:none;backdrop-filter:none;text-shadow:0 2px 16px #061013d9}
+.hero .eyebrow{justify-content:center;color:#f7d393;font-size:11px}
+.hero .eyebrow-line{background:#f7d393}
+.hero h1{font-size:clamp(58px,6vw,104px);line-height:1.1;margin:20px 0;color:#fffaf0}
+.hero h1 br:first-of-type{display:none}
+.hero h1 em{color:#f2c27b}
+.hero-lead{color:#fff8ed;font-size:clamp(15px,1.3vw,19px);line-height:1.6;max-width:650px;margin:0 auto}
+.hero-actions{justify-content:center;margin-top:30px;gap:10px;text-shadow:none}
+.hero .button{background:#101d228c;border-color:#ffffff9c;color:#fff;gap:20px;backdrop-filter:blur(5px)}
+.hero .button.primary{background:#d9ad67;border-color:#d9ad67;color:#142320}
+.hero .button.ghost:hover{background:#25343ad9}
+.hero-meta{justify-content:center;border-top:1px solid #ffffff87;max-width:530px;margin:40px auto 0;padding-top:16px;color:#f2eee4}
+.hero-meta strong{color:#fff;font-size:23px}
+@media(max-width:700px){.hero{display:block;min-height:0;padding:0;text-align:left}.hero-image{position:relative;inset:auto;z-index:auto}.hero-image img{width:100%;height:auto;object-fit:contain}.hero::before{z-index:0;background:linear-gradient(180deg,#0b171fd1 0%,#0b171f85 25%,transparent 61%,#0b171f5c 100%)}.hero-copy{position:absolute;z-index:1;top:5%;left:6%;width:88%;text-align:left}.hero .eyebrow{justify-content:flex-start;font-size:9px;letter-spacing:.12em}.hero .eyebrow-line{width:16px;flex:none}.hero h1{font-size:clamp(38px,10vw,64px);line-height:1.08;margin:14px 0}.hero h1 br:first-of-type{display:block}.hero-lead{font-size:13px;line-height:1.5;max-width:330px;margin:0}.hero-actions{justify-content:flex-start;margin-top:18px}.hero .button{font-size:12px;padding:9px 12px}.hero-actions .button.ghost,.hero-meta{display:none}}
+@media(max-width:380px){.hero h1{font-size:36px}.hero-lead{font-size:12px}}
+
+/* Keep the title in the clear space between the two faces. */
+@media(min-width:701px){.hero-copy{width:min(600px,48vw)}.hero h1{font-size:clamp(46px,4.25vw,70px)}.hero h1 br{display:inline}.hero-lead{font-size:15px}.hero-meta{margin-top:27px}.hero-actions{margin-top:24px}}
+@media(min-width:701px) and (max-width:1200px){.hero-copy{width:min(440px,43vw)}.hero h1{font-size:clamp(40px,4vw,52px)}.hero .eyebrow{font-size:9px}.hero-lead{font-size:13px}.hero-meta{font-size:9px;gap:15px}.hero-meta strong{font-size:19px}}
+@media(max-width:700px){.hero{display:block;background:#101d22}.hero::before{height:25%;bottom:auto;background:linear-gradient(180deg,#0b171fc9,transparent)}.hero-copy{position:static;width:100%;padding:21px 22px 29px;text-align:left;text-shadow:none}.hero .eyebrow{display:none}.hero h1{position:absolute;top:3%;left:5%;width:90%;margin:0;color:#fff;font-size:clamp(29px,8vw,47px);line-height:1.05;text-shadow:0 2px 12px #071016}.hero-title-intro{display:none}.hero-lead{max-width:520px;margin:0;color:#f7f0e4;font-size:14px}.hero-actions{margin-top:18px}.hero .button.ghost{display:inline-flex}.hero-meta{display:flex;justify-content:flex-start;margin:24px 0 0;max-width:100%;gap:18px}}
+@media(max-width:420px){.hero h1{font-size:clamp(29px,8vw,35px)}.hero .button{font-size:11px;padding:9px 10px}.hero-meta strong{font-size:18px}.hero-meta{font-size:9px;gap:12px}}
+
 /* Each control occupies one intersection of the board artwork. */
 .board-panel{overflow-x:auto}
 .board-grid{--board-col:clamp(23px,min(4.5vw,5.5dvh),56px);--board-row:calc(var(--board-col) * .85);--board-label:26px;position:relative;isolation:isolate;grid-template-columns:var(--board-label) repeat(11,var(--board-col));grid-template-rows:var(--board-label) repeat(12,var(--board-row));gap:0;width:max-content;margin:auto}

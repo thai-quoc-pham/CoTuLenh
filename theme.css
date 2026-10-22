@@ -1,0 +1,51 @@
+/* Warm palette drawn from the hero photography. Board team colors stay distinct. */
+:root{--ink:#25231f;--muted:#695f54;--cream:#f2e9d8;--paper:#fff9ec;--line:#d8cbb8;--green:#292c29;--green2:#76502f;--gold:#d8a45f;--red:#a84436;--blue:#315f70}
+body{background:var(--cream)}
+.topbar{background:#f8f0e1;border-bottom-color:#d6c4aa}
+.logo-mark,.top-cta{background:#292c29;color:#f1bf78}
+.topbar nav a:hover,.topbar nav a.active{color:#875329}
+.top-cta:hover{background:#47382b}
+.topbar nav.open{background:#f8f0e1}
+.menu-toggle{color:#292c29}
+.hero{background:#171c1b}
+.hero h1 em{color:#f0bd76}
+.hero .button.primary{background:#d8a45f;border-color:#d8a45f;color:#201d19}
+.hero .button.primary:hover{background:#edbb78}
+.hero .button.ghost{background:#171c1bbb;border-color:#f2e9d8a8}
+.notice{background:#eadbc2;border-left-color:#a46a3b}
+.notice-icon,.rule-strip,.thought-box{background:#292c29}
+.kicker,.goal-num,.rule-number,.note-icon,.unit-index,.text-button,.quiz-top,.quiz-card .question-index{color:#84552f}
+.board-section{background:#e7dbc7}
+.practice-section,.guided-section,.scenario-section{background:#f2e9d8}
+.strategy-section,.capture-section,.ai-section{background:#e9dec9}
+.rules-section,footer{background:#242723;color:#fff7ea}
+.rules-section .kicker,.rules-list .rule-number{color:#e7b676}
+.rules-section .section-heading p,.rule-content{color:#dfd0bb}
+.rules-list,.rules-list details{border-color:#766c5d}
+.reference-divider{border-color:var(--line)}
+.goal-card,.unit-card,.quiz-card,.note-block,.setup-board-wrap,.setup-step,.setup-figure,.board-panel,.practice-board,.lesson-panel,.lesson-tab,.capture-board-card,.capture-info,.ai-game,.ai-board-card,.scenario-board-card,.scenario-question-card{background:var(--paper);border-color:var(--line)}
+.unit-images{background:#e5d7bf}
+.setup-check,.guided-progress{background:#292c29}
+.guided-progress-track{background:#756b5c}
+.guided-progress-track span,.quiz-progress div{background:#d8a45f}
+.guided-progress button,.lesson-end button,.move-notes>button{background:#d8a45f;color:#241f19}
+.lesson-tab{color:#332a23}
+.lesson-tab.active{background:#f0dfc1;border-color:#ab7440}
+.lesson-tab.done{border-top-color:#a56a35}
+.lesson-tab span,.scenario-eyebrow,.capture-toolbar,.ai-controls label{color:#84552f}
+.lesson-tab small,.lesson-title p,.lesson-copy,.reference-divider p{color:var(--muted)}
+.intro-grid>div,.action-columns>div,.lesson-question,.recognize-card,.movement-facts div,.ai-rules,.scenario-feedback{background:#f4ead9;border-color:#ddcbb1}
+.intro-grid strong,.action-columns strong{color:#5a3b24}
+.lesson-options button,.lesson-options a,.scenario-options button,.scenario-actions button,.scenario-summary button,.ai-controls select,.ai-controls button{background:#fff9ec;color:#34271d;border-color:#bda78d}
+.lesson-options button:hover,.lesson-options a:hover,.scenario-options button:hover:not(:disabled),.scenario-actions button:hover{background:#f0dfc1;border-color:#a56a35}
+.filter{color:#6d492d;border-color:#c5ae90}
+.filter:hover,.filter.active,.scenario-modes .selected,.scenario-categories [aria-pressed=true],.scenario-list [aria-current=true],.scenario-actions #scenarioNext,.ai-controls #aiNew,.ai-actions button,.quiz-next{background:#292c29;color:#fff9ec;border-color:#292c29}
+.scenario-modes button,.scenario-categories button,.scenario-list button{background:#fff9ec;color:#443126;border-color:#c4ae91}
+.scenario-progress,.scenario-summary strong,.ai-board-head strong{color:#76502f}
+.ai-note,.capture-feedback.note,.tip-box{background:#eadcc6;color:#493627;border-left-color:#b77a3d}
+.board-notes .note-block,.strategy-grid article,.setup-guide .setup-step{background:#fff9ec;border-color:var(--line)}
+.filter.active,.quiz-next,.scenario-actions #scenarioNext{color:#fff9ec}
+footer small{color:#d0bea8}
+dialog{background:#fff9ec}
+.dialog-facts div,.dialog-images figure{background:#efe2cd}
+@media(max-width:700px){.hero-copy{background:#171c1b}.hero .button.ghost{background:transparent}}

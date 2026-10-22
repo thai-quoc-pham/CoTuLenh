@@ -36,7 +36,7 @@
 .capture-piece-title{display:flex;align-items:center;gap:14px;border-bottom:1px solid #dce4d9;padding:17px 0}
 .capture-piece-title img{width:72px;height:72px;object-fit:contain}
 .capture-piece-title span{font-size:10px;color:#4e7866;font-weight:800;letter-spacing:.13em}
-.capture-piece-title h3{font:600 27px 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:3px 0}
+.capture-piece-title h3{font:600 27px 'Noto Serif',Georgia,serif;letter-spacing:-.02em;margin:3px 0}
 .capture-facts{display:grid;gap:9px;margin:16px 0}
 .capture-facts>div{background:#edf2ea;padding:12px 14px}
 .capture-facts>div:nth-child(2){background:#f5eae5}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1100" preserveAspectRatio="none" role="img" aria-labelledby="title desc">
+  <title id="title">Địa hình bàn Cờ Tư Lệnh</title>
+  <desc id="desc">Mười khoảng ngang và mười một khoảng dọc. Nước ở dải ven trái và dải ngang giữa bàn; có hai cầu tại cột F và H.</desc>
+  <defs>
+    <linearGradient id="land" x2="0" y2="1"><stop stop-color="#f9f5eb"/><stop offset="1" stop-color="#eee9dd"/></linearGradient>
+    <linearGradient id="water" x2="1" y2="1"><stop stop-color="#afe8f0"/><stop offset="1" stop-color="#8ed8e7"/></linearGradient>
+  </defs>
+  <rect width="1000" height="1100" fill="url(#land)"/>
+  <path d="M0 0H200V1100H0Z M0 500H1000V600H0Z" fill="url(#water)"/>
+  <path d="M200 0V500 M200 600V1100 M0 500H1000 M0 600H1000" fill="none" stroke="#b98854" stroke-width="3" opacity=".7"/>
+  <path d="M486 500H514V600H486Z M686 500H714V600H686Z" fill="#ecd8a5" opacity=".95"/>
+  <g fill="none" stroke="#26343a" stroke-width="2.5">
+    <path d="M100 0V1100 M200 0V1100 M300 0V1100 M400 0V1100 M500 0V1100 M600 0V1100 M700 0V1100 M800 0V1100 M900 0V1100"/>
+    <path d="M0 100H1000 M0 200H1000 M0 300H1000 M0 400H1000 M0 500H1000 M0 600H1000 M0 700H1000 M0 800H1000 M0 900H1000 M0 1000H1000"/>
+  </g>
+  <path d="M500 515V585 M700 515V585" fill="none" stroke="#a57943" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 12"/>
+  <rect x="2" y="2" width="996" height="1096" fill="none" stroke="#997c61" stroke-width="6"/>
+</svg>

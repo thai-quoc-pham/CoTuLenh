@@ -141,3 +141,22 @@
 .self-terrain-legend i{display:inline-block;width:13px;height:13px;border:1px solid #aac2b4}
 .self-terrain-legend .sea{background:#a9ceda}.self-terrain-legend .river{background:#c0dfd3}.self-terrain-legend .bridge{background:#d9b874}.self-terrain-legend .land{background:#eae9db}
 @media(max-width:700px){.guided-progress{flex-wrap:wrap}.guided-progress-track{min-width:100%;order:3}.lesson-list{grid-template-columns:repeat(2,minmax(0,1fr))}.intro-grid,.action-columns,.guided-turn{grid-template-columns:1fr}.lesson-tab{min-height:85px}.reference-divider{display:block}.reference-divider>a{display:inline-block;margin-top:15px}.recognize-card{display:block}.recognize-card>img{width:110px;height:110px}.guided-section{padding-left:16px;padding-right:16px}.lesson-panel{padding:18px}.lesson-end{align-items:flex-start;flex-direction:column}}
+
+/* Mixed shoreline squares stay visually distinct from open water. */
+.terrain-key .mixed,.self-terrain-legend .mixed{background:#d7e8dc}
+.coordinate-cell.mixed,.self-setup-board button.mixed{background:#d7e8dc}
+.coordinate-cell.mixed.shore,.self-setup-board button.mixed.shore{background:#eceade}
+.terrain-key .water,.coordinate-cell.water,.self-setup-board button.sea,.self-terrain-legend .sea{background:#cbdedf}
+.terrain-key .bridge,.coordinate-cell.bridge,.self-setup-board button.bridge,.self-terrain-legend .bridge{background:#d9bd80}
+.turn-board img{aspect-ratio:1}
+
+.coordinate-board,.self-setup-board{position:relative;isolation:isolate;gap:0;padding:0;width:max-content;margin-left:auto;margin-right:auto}
+.coordinate-board{--board-col:clamp(23px,min(4.5vw,5.5dvh),50px);--board-row:calc(var(--board-col) * .85);grid-template-columns:repeat(11,var(--board-col));grid-template-rows:repeat(12,var(--board-row))}
+.self-setup-board{--board-col:var(--self-cell);--board-row:calc(var(--board-col) * .85);grid-template-rows:repeat(12,var(--board-row));background:transparent}
+.coordinate-board::before,.self-setup-board::before{content:"";position:absolute;z-index:0;pointer-events:none;inset:0;background:url('assets/board-terrain.svg') center/calc(100% - var(--board-col)) calc(100% - var(--board-row)) no-repeat}
+.coordinate-board .coordinate-cell,.self-setup-board button{position:relative;z-index:1;width:var(--board-col);height:var(--board-row);aspect-ratio:auto;background:transparent!important;border:0}
+.coordinate-board .coordinate-cell.base{color:#1d5b52;font-weight:800}
+.coordinate-board .coordinate-cell small,.self-setup-board button small{text-shadow:0 1px #fff}
+.self-setup-board button img{width:70%;height:70%}
+.terrain-key .water,.self-terrain-legend .sea{background:#9edeea}
+.terrain-key .mixed,.self-terrain-legend .mixed{background:linear-gradient(90deg,#9edeea 50%,#f2eee4 50%)}

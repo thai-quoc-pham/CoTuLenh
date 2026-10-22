@@ -1,0 +1,32 @@
+/* Board coordinates are intersections. Each grid item is a hit target centered on a line crossing. */
+.practice-grid,.move-grid,.capture-grid,.scenario-board{position:relative;isolation:isolate;gap:0;padding:0;overflow:visible}
+.practice-grid,.move-grid,.capture-grid{background:#f0eee4}
+.practice-grid.sea-board,.move-grid.sea-board,.capture-grid.water-scenario{background:#b9d9e4}
+.capture-grid.water-scenario{background:linear-gradient(90deg,#b9d9e4 0 55.56%,#d0e4dc 55.56% 66.67%,#e9e8dc 66.67% 100%)}
+.practice-grid::after,.move-grid::after,.capture-grid::after,.scenario-board::after{content:"";position:absolute;pointer-events:none;z-index:4;background:url('assets/board-intersections-9.svg') center/100% 100% no-repeat;inset:calc(100% / 18)}
+.scenario-board::after{background-image:url('assets/board-intersections-7x6.svg');left:calc(100% / 14);right:calc(100% / 14);top:calc(100% / 12);bottom:calc(100% / 12)}
+.practice-cell,.move-cell,.capture-cell{position:relative;border:0!important;background:transparent!important;display:grid;place-items:center;min-width:0}
+.practice-cell:nth-child(even),.capture-cell:nth-child(even){background:transparent!important}
+.practice-cell img,.move-cell img,.capture-cell img,.scenario-cell img{position:relative;z-index:5;object-fit:contain;filter:drop-shadow(0 2px 2px #24302d55)}
+.practice-cell.origin::before,.move-cell.origin::before,.capture-cell.origin::before{content:"";position:absolute;z-index:3;width:80%;height:80%;border-radius:50%;background:#f6e9d9;border:2px solid #9f6953}
+.practice-grid.sea-board .practice-cell.origin::before,.move-grid.sea-board .move-cell.origin::before,.capture-grid.water-scenario .capture-cell.origin::before{background:#deedf0;border-color:#39798b}
+.practice-cell.reach,.move-cell.legal{font-size:0;color:transparent}
+.practice-legend .origin-dot,.practice-legend .reach-dot{border-radius:50%}
+.practice-cell.reach::after,.move-cell.legal::after,.capture-cell.move-option::after{content:"";position:relative;z-index:5;width:26%;height:26%;border-radius:50%;background:#397f61;box-shadow:0 0 0 4px #e7f3e5b8}
+.practice-grid.sea-board .practice-cell.reach::after,.move-grid.sea-board .move-cell.legal::after{background:#237d94;box-shadow:0 0 0 4px #dff4f7b8}
+.move-cell.picked-right::after{background:#126b38}.move-cell.picked-wrong::after{background:#b04439}
+.move-cell:hover,.move-cell:focus-visible,.capture-cell:hover,.capture-cell:focus-visible,.capture-cell.chosen{outline:2px solid #176953;outline-offset:-4px;z-index:6}
+.capture-grid .capture-cell.sea,.capture-grid .capture-cell.mixed,.capture-grid .capture-cell.land,.capture-grid .capture-cell.move-option,.capture-grid .capture-cell.chosen{background:transparent!important}
+.capture-cell.good::before,.capture-cell.bad::before,.capture-cell.blocker::before{content:"";position:absolute;z-index:3;width:80%;height:80%;border-radius:50%;background:#e5eef0;border:2px solid #699aaa}
+.capture-cell.blocker::before{background:#f3e7d8;border-color:#b88758}
+.capture-cell.chosen.good::before{border-color:#2f8158;background:#daf1e1}.capture-cell.chosen.bad::before{border-color:#ac554a;background:#f6ded8}
+.capture-cell.move-option::after{position:absolute;z-index:5}
+.scenario-board{background:#eaece2}
+.scenario-cell{border:0;border-radius:0;padding:2px;position:relative;background:#eaece2}
+.scenario-cell.water{background:#bbd8dd}.scenario-cell.mixed{background:#d6e5db}
+.scenario-cell small{z-index:5;background:#ffffffa8;border-radius:2px;padding:0 2px}
+.scenario-cell.occupied::before{content:"";position:absolute;z-index:3;width:82%;height:82%;border-radius:50%;background:#fffdf1a8}
+.scenario-cell.highlight{box-shadow:inset 0 0 0 2px #b98131}.scenario-cell.solution{box-shadow:inset 0 0 0 3px #13745a}
+.scenario-cell:not(:disabled){outline:2px solid #b9853d;outline-offset:-5px}
+.scenario-cell:not(:disabled):hover,.scenario-cell:not(:disabled):focus-visible{z-index:6}
+@media(max-width:560px){.practice-cell.origin::before,.move-cell.origin::before,.capture-cell.origin::before,.capture-cell.good::before,.capture-cell.bad::before,.capture-cell.blocker::before{width:87%;height:87%}}

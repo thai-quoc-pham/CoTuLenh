@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#123d38">
+  <title>Thống kê lượt mở — Cờ Tư Lệnh</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="analytics/stats.css">
+  <script src="analytics/config.js" defer></script>
+  <script src="analytics/stats.js" defer></script>
+</head>
+<body>
+  <main class="stats-page">
+    <a class="back" href="index.html">← Về trang học Cờ Tư Lệnh</a>
+    <span class="eyebrow">THỐNG KÊ WEBSITE</span>
+    <h1>Lượt mở từ trình duyệt mới</h1>
+    <p class="lead">Số liệu được ghi vào tệp JSON của repository. Một trình duyệt chỉ được tính một lần khi nó còn giữ dữ liệu trang.</p>
+    <div class="stats-cards"><div><span>TỔNG SỐ TRÌNH DUYỆT</span><strong id="totalBrowsers">—</strong></div><div><span>HÔM NAY</span><strong id="todayBrowsers">—</strong></div></div>
+    <p id="statsStatus" class="status" role="status">Đang tải số liệu…</p>
+    <h2>Các ngày gần đây</h2><div id="dailyStats" class="daily-stats"></div>
+    <p class="note">Đây là số trình duyệt mở lần đầu, không phải số người hoặc số thiết bị vật lý. Trang không hiển thị mã trình duyệt và không lưu địa chỉ IP. Khi chưa kết nối dịch vụ thống kê, website chính vẫn hoạt động bình thường.</p>
+  </main>
+</body>
+</html>

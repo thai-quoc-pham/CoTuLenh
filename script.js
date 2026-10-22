@@ -31,6 +31,12 @@ document.getElementById('pieceDialog').addEventListener('click',e=>{if(e.target.
 renderUnits();
 
 const bridges=new Set(['f6','f7','h6','h7']);const hqs=new Set(['f2','h2','f11','h11']);
+function terrainAt(coord){
+  if(bridges.has(coord))return 'bridge';
+  if(coord[0]==='c'||['d6','e6','d7','e7'].includes(coord))return 'mixed';
+  if(coord[0]==='a'||coord[0]==='b')return 'water';
+  return 'land';
+}
 const redSetup = [
   ['g1',0],['b2',10],['e2',9],['f2',1],['h2',1],['i2',9],
   ['d3',7],['g3',8],['j3',7],['c4',10],['e4',5],['f4',6],
@@ -47,9 +53,9 @@ setupBoard.innerHTML='<span class="setup-coordinate"></span>'+[...'abcdefghijk']
   const n=12-row;
   return `<span class="setup-coordinate">${n}</span>`+[...'abcdefghijk'].map(c=>{
     const coord=`${c}${n}`,piece=setupPieces.get(coord),isBridge=bridges.has(coord);
-    const terrain=isBridge?'bridge':c==='a'||c==='b'?'water':n===6||n===7?'river':'';
-    const content=piece?`<button class="setup-piece" type="button" data-piece-name="${pieces[piece.index].name}" data-piece-side="${piece.side}" data-coord="${coord}" data-tooltip="${pieces[piece.index].name} · ${piece.side}" title="${pieces[piece.index].name} · phe ${piece.side} · ô ${coord.toUpperCase()}" aria-label="${pieces[piece.index].name}, phe ${piece.side}, ô ${coord}"><img src="${assets}cutouts/board/${pieces[piece.index].asset}-${piece.fileSide}.png" alt="" loading="lazy"></button>`:isBridge?'<span class="bridge-label">CẦU</span>':'';
-    return `<div class="setup-square ${terrain}" role="gridcell"><span class="square-coordinate">${coord}</span>${content}</div>`;
+    const terrain=terrainAt(coord);
+    const content=piece?`<button class="setup-piece" type="button" data-piece-name="${pieces[piece.index].name}" data-piece-side="${piece.side}" data-coord="${coord}" data-tooltip="${pieces[piece.index].name} · ${piece.side}" title="${pieces[piece.index].name} · phe ${piece.side} · ô ${coord.toUpperCase()}" aria-label="${pieces[piece.index].name}, phe ${piece.side}, ô ${coord}"><img src="${assets}cutouts/board/${pieces[piece.index].asset}-${piece.fileSide}.png" alt="" loading="lazy"></button>`:'';
+    return `<div class="setup-square ${terrain} ${c==='c'?'shore':''}" role="gridcell"><span class="square-coordinate">${coord}</span>${content}</div>`;
   }).join('')
 }).join('');
 function showSetupPiece(target){const b=target.closest('.setup-piece');if(!b)return;setupInfo.textContent=`${b.dataset.pieceName} · phe ${b.dataset.pieceSide} · ô ${b.dataset.coord.toUpperCase()}`}
@@ -64,8 +70,8 @@ setupZoom.addEventListener('click',()=>{
 });
 
 const board=document.getElementById('boardGrid');
-board.innerHTML='<span class="board-label"></span>'+[...'abcdefghijk'].map(c=>`<span class="board-label">${c}</span>`).join('')+Array.from({length:12},(_,row)=>{const n=12-row;return `<span class="board-label">${n}</span>`+[...'abcdefghijk'].map(c=>{const id=c+n;const special=bridges.has(id)?'bridge':hqs.has(id)?'hq':c==='a'||c==='b'?'water':n===6||n===7?'river':'';const icon=bridges.has(id)?'◇':hqs.has(id)?'◆':'·';return `<button class="board-cell ${special}" type="button" data-coord="${id}" role="gridcell" aria-label="${id}${bridges.has(id)?', cầu':hqs.has(id)?', Tổng Hành Dinh':''}">${icon}</button>`}).join('')}).join('');
-board.addEventListener('click',e=>{const b=e.target.closest('[data-coord]');if(!b)return;board.querySelector('.selected')?.classList.remove('selected');b.classList.add('selected');const id=b.dataset.coord;document.getElementById('boardStatus').textContent=`${id.toUpperCase()} · ${bridges.has(id)?'Ô cầu':hqs.has(id)?'Tổng Hành Dinh':b.classList.contains('water')?'Vùng nước minh họa':'Ô cờ thông thường'}`});
+board.innerHTML='<span class="board-label"></span>'+[...'abcdefghijk'].map(c=>`<span class="board-label">${c}</span>`).join('')+Array.from({length:12},(_,row)=>{const n=12-row;return `<span class="board-label">${n}</span>`+[...'abcdefghijk'].map(c=>{const id=c+n;const special=hqs.has(id)?'hq':terrainAt(id);const icon=bridges.has(id)?'◇':hqs.has(id)?'◆':'';return `<button class="board-cell ${special} ${c==='c'?'shore':''}" type="button" data-coord="${id}" role="gridcell" aria-label="${id}${bridges.has(id)?', cầu':hqs.has(id)?', Tổng Hành Dinh':''}">${icon}</button>`}).join('')}).join('');
+board.addEventListener('click',e=>{const b=e.target.closest('[data-coord]');if(!b)return;board.querySelector('.selected')?.classList.remove('selected');b.classList.add('selected');const id=b.dataset.coord;document.getElementById('boardStatus').textContent=`${id.toUpperCase()} · ${bridges.has(id)?'Ô cầu':hqs.has(id)?'Tổng Hành Dinh':terrainAt(id)==='water'?'Vùng nước':terrainAt(id)==='mixed'?'Ô hỗn hợp ven nước':'Ô đất'}`});
 
 const practiceSelect=document.getElementById('practiceSelect');practiceSelect.innerHTML=pieces.map((p,i)=>`<option value="${i}">${p.name}</option>`).join('');
 function renderPractice(){const i=Number(practiceSelect.value),p=pieces[i],naval=p.name==='Hải quân',grid=document.getElementById('practiceGrid');document.getElementById('practiceTitle').textContent=p.name;document.getElementById('practiceMove').textContent=p.move;document.getElementById('practiceTip').textContent=p.tip;document.getElementById('practicePiece').innerHTML=`<img src="${imageOf(p,'xanh',true)}" alt="Quân ${p.name} phe Xanh">`;grid.classList.toggle('sea-board',naval);grid.setAttribute('aria-label',naval?'Bàn tập vùng biển: các ô sáng là hướng đi của Hải quân':'Lưới minh họa tầm đi');document.getElementById('practiceSeaLegend').hidden=!naval;grid.innerHTML=Array.from({length:81},(_,i)=>{const x=i%9-4,y=Math.floor(i/9)-4,ax=Math.abs(x),ay=Math.abs(y),orth=(x===0||y===0)&&ax+ay>0,diag=ax===ay&&ax>0;let reach=false;if(p.dir==='orth')reach=orth&&Math.max(ax,ay)<=p.range;else if(p.dir==='all')reach=(orth||diag)&&Math.max(ax,ay)<=p.range;else if(p.dir==='missile')reach=(orth&&Math.max(ax,ay)<=2)||(diag&&ax===1);return `<div class="practice-cell ${x===0&&y===0?'origin':reach?'reach':''}" aria-label="${x===0&&y===0?'Vị trí quân':reach?'Trong tầm minh họa':'Ngoài tầm'}">${x===0&&y===0?`<img src="${assets}cutouts/board/${p.asset}-xanh.png" alt="${p.name}" loading="lazy">`:reach?'•':''}</div>`}).join('')}
